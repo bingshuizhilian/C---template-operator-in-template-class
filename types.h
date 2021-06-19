@@ -5,9 +5,12 @@
 #include <map>
 #include <iostream>
 #include <string>
-#include "printer.h"
 
 using namespace std;
+
+template <typename T> class Printer;
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const Printer<T> &rhs);
 
 struct TYPE_A
 {
