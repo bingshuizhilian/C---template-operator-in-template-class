@@ -8,17 +8,17 @@ std::ostream &operator<<(std::ostream &os, const Printer<TYPE_B> &object)
     os << "call operator<< of TYPE_B start" << std::endl;
     os << object.m_t.aval << std::endl;
     os << object.m_t.cval << std::endl;
-    /// methord 1
+    /// method 1
     os << "methord 1 start" << std::endl;
     os << object.m_t.svec.front() << std::endl;
     os << object.m_t.svec.back() << std::endl;
     os << "methord 1 end" << std::endl;
-    /// methord 2
+    /// method 2
     os << "methord 2 start" << std::endl;
     copy(object.m_t.svec.begin(), object.m_t.svec.end(),
          ostream_iterator<string>(os, "+++"));
     os << "methord 2 end" << std::endl;
-    /// methord 3
+    /// method 3
     os << "methord 3 start" << std::endl;
     for_each(begin(object.m_t.svec), end(object.m_t.svec),
              [&](string s){ os << s << endl; });
