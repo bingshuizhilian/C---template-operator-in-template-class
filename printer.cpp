@@ -1,4 +1,6 @@
 #include "printer.h"
+#include <algorithm>
+#include <iterator>
 
 template <>
 std::ostream &operator<<(std::ostream &os, const Printer<TYPE_B> &object)
@@ -6,8 +8,21 @@ std::ostream &operator<<(std::ostream &os, const Printer<TYPE_B> &object)
     os << "call operator<< of TYPE_B start" << std::endl;
     os << object.m_t.aval << std::endl;
     os << object.m_t.cval << std::endl;
+    /// methord 1
+    os << "methord 1 start" << std::endl;
     os << object.m_t.svec.front() << std::endl;
     os << object.m_t.svec.back() << std::endl;
+    os << "methord 1 end" << std::endl;
+    /// methord 2
+    os << "methord 2 start" << std::endl;
+    copy(object.m_t.svec.begin(), object.m_t.svec.end(),
+         ostream_iterator<string>(os, "+++"));
+    os << "methord 2 end" << std::endl;
+    /// methord 3
+    os << "methord 3 start" << std::endl;
+    for_each(begin(object.m_t.svec), end(object.m_t.svec),
+             [&](string s){ os << s << endl; });
+    os << "methord 3 end" << std::endl;
     os << "call operator<< of TYPE_B end" << std::endl;
 
     return os;
@@ -25,7 +40,7 @@ std::ostream &operator<<(std::ostream &os, const Printer<TYPE_A> &object)
     return os;
 }
 
-/// defination out of class cause comlile problems
+/// defination out of class cause compile problems
 //template <typename T>
 //template <typename U>
 //void Printer<T>::fooA(std::enable_if_t<std::is_same_v<U, TYPE_A> > *pa)

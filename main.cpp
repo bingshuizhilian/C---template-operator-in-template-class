@@ -13,7 +13,7 @@ int main()
 
     TYPE_B b('=', "345hg", "1.65gha");
     Printer<TYPE_B> pb(b);
-    //    pb.fooA(); //got an compile time error
+ //    pb.fooA(); //got an compile time error
     pb.fooB();
     pb.fooB2();
     cout << pb;
