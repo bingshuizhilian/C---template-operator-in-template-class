@@ -8,5 +8,4 @@ SOURCES += \
         printer.cpp
 
 HEADERS += \
-    printer.h \
-    types.h
+    printer.h
